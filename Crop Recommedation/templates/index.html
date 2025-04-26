@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Crop Recommedation System</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='styles.css') }}"
+    />
+  </head>
+  <body
+    class="font h-screen bg-[url({{ url_for('static',filename='bg.jpg') }})] bg-no-repeat bg-cover bg-center"
+  >
+    <header>
+      <nav class="justify-center flex py-2 fixed w-full">
+        <a
+          href="/"
+          class="font-bold text-white hover:text-red-500 hover:underline underline-offset-2 decoration-2"
+          >Crop Recommedation System</a
+        >
+      </nav>
+    </header>
+    <main class="flex justify-center items-center h-full">
+      <div class="bg-black/45 p-4 rounded">
+        {% if prediction_value %}
+        <div class="flex justify-center">
+          <p
+            class="animate-bounce text-cyan-400 underline underline-offset-1 bg-black px-2 rounded"
+          >
+            Crop Suggest : {{prediction_value}}
+          </p>
+        </div>
+        {% endif %}
+        <form
+          action="{{ url_for('predict') }}"
+          method="post"
+          class="flex flex-col"
+        >
+          <div class="grid grid-cols-2 gap-y-4">
+            <label for="nitrogen" class="text-sm text-white"
+              >Enter Nitrogen &RightArrow;</label
+            >
+            <input
+              id="nitrogen"
+              type="text"
+              placeholder="Enter Nitrogen value"
+              name="N"
+              class="px-2 outline rounded text-white focus:outline-2 outline-cyan-500 text-sm font-semibold"
+              required
+            />
+            <label for="phosphorus" class="text-sm text-white"
+              >Enter phosphorus &RightArrow;</label
+            >
+            <input
+              id="phosphorus"
+              type="text"
+              placeholder="Enter Phosphorus value"
+              name="P"
+              class="px-2 outline rounded text-white focus:outline-2 outline-cyan-500 text-sm font-semibold"
+              required
+            />
+            <label for="potassium" class="text-sm text-white"
+              >Enter Potassium &RightArrow;</label
+            >
+            <input
+              id="potassium"
+              type="text"
+              placeholder="Enter Potassium value"
+              name="K"
+              class="px-2 outline rounded text-white focus:outline-2 outline-cyan-500 text-sm font-semibold"
+              required
+            />
+            <label for="temp" class="text-sm text-white"
+              >Enter temperature &RightArrow;</label
+            >
+            <input
+              id="temp"
+              type="text"
+              placeholder="Enter Temperature"
+              name="temperature"
+              class="px-2 outline rounded text-white focus:outline-2 outline-cyan-500 text-sm font-semibold"
+              required
+            />
+            <label for="humidity" class="text-sm text-white"
+              >Enter humidity &RightArrow;</label
+            >
+            <input
+              id="humidity"
+              type="text"
+              placeholder="Enter Humidity"
+              name="humidity"
+              class="px-2 outline rounded text-white focus:outline-2 outline-cyan-500 text-sm font-semibold"
+              required
+            />
+            <label for="ph" class="text-sm text-white"
+              >Enter pH &RightArrow;</label
+            >
+            <input
+              id="ph"
+              type="text"
+              placeholder="Enter pH"
+              name="pH"
+              class="px-2 outline rounded text-white focus:outline-2 outline-cyan-500 text-sm font-semibold"
+              required
+            />
+            <label for="rainfall" class="text-sm text-white"
+              >Enter rainfall &RightArrow;</label
+            >
+            <input
+              id="rainfall"
+              type="text"
+              placeholder="Enter Rainfall"
+              name="rainfall"
+              class="px-2 outline rounded text-white focus:outline-2 outline-cyan-500 text-sm font-semibold"
+              required
+            />
+          </div>
+          <div class="flex justify-center my-4">
+            <button
+              type="submit"
+              class="p-1 px-2 text-white font-bold bg-cyan-800 hover:bg-cyan-700 cursor-pointer hover:scale-110 transition rounded"
+            >
+              submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
