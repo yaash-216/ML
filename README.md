@@ -74,6 +74,20 @@ The repository has the following structure:
     │   └── data.csv
     └── README.md
 ```
+or
+```
+Flask web project with ml
+/your-repo-name
+    ├── static/
+    │   ├── images
+    │   └── css files
+    ├── templates/
+    │   └── html files
+    ├── app.py
+    ├── csv file
+    ├── joblib or pickle
+    └── ipynb file
+```
 
 ## Contributing 
 Contributions are welcome! If you'd like to contribute.
